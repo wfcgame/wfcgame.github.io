@@ -1,0 +1,6 @@
+Asset: public/uploads/teeth-app.png
+Mode: built-in image_gen edit.
+Input: public/uploads/teetapp.png (initial presentation image).
+The corrected project name is TEETH APP.
+
+Edit this portfolio image only to correct the app name on the smartphone from 'TEETApp' to exactly 'TEETH APP' (T E E T H, space, A P P), all uppercase. Keep the elegant white TEETH and lime APP typography, fit the title comfortably within the phone display. Preserve the entire composition, phone, smile comparison images, other labels, dental arch, wireframe, lighting, colors, dimensions, and background unchanged. No other edits.

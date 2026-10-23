@@ -35,7 +35,7 @@ On a deployed site, the editor requires a GitHub repository and an OAuth authent
 
 Articles are stored in `src/content/blog/`; projects are stored in `src/content/projects/`.
 The current project list contains MU Origin, King Fish Dragon, Sniper Revenge,
-TEETApp, and Robot AI Lab. Previous project entries are preserved in `archive/projects/`,
+TEETH APP, and Robot AI Lab. Previous project entries are preserved in `archive/projects/`,
 outside the content loader, and are no longer listed on the site. Existing blog
 articles remain available.
 
@@ -117,11 +117,11 @@ The linked video titles differ from the supplied project names; the cards retain
 those original video titles in their source captions. Local thumbnails in
 `public/uploads/` come from the corresponding YouTube video thumbnail endpoints.
 
-## TEETApp
+## TEETH APP
 
-TEETApp is listed as an app developed by the portfolio owner with Unity and OpenGL.
+TEETH APP is listed as an app developed by the portfolio owner with Unity and OpenGL.
 Its card links to `/blog/teetapp/`. The original generated cover is
-`public/uploads/teetapp.png`, labeled as a presentation mockup rather than an app
+`public/uploads/teeth-app.png`, labeled as a presentation mockup rather than an app
 screenshot. Visual direction references the supplied Perfect Corp article:
 https://www.perfectcorp.com/consumer/blog/photo-editing/straight-teeth-filter
-The exact generation prompt is preserved in `archive/teetapp-image-prompt.txt`.
+The original generation prompt is preserved in `archive/teetapp-image-prompt.txt`; the name correction prompt is in `archive/teeth-app-image-edit-prompt.txt`.
