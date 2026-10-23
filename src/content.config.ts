@@ -23,6 +23,8 @@ const projects = defineCollection({
 		title: z.string(),
 		description: z.string(),
 		image: z.string().optional(),
+		imageCaption: z.string().optional(),
+		status: z.string().optional(),
 		author: z.string().optional(),
 		concept: z.boolean().default(false),
 		experience: z.boolean().default(false),

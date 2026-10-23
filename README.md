@@ -34,10 +34,15 @@ Then open `http://localhost:4321/admin/index.html`. The local CMS writes content
 On a deployed site, the editor requires a GitHub repository and an OAuth authentication provider. Before deploying, update `backend.repo` in `public/admin/config.yml` to the actual `owner/repository`, and configure a GitHub OAuth provider for Decap CMS. Only GitHub accounts with write access can publish. Until that connection is configured, use the local editor.
 
 Articles are stored in `src/content/blog/`; projects are stored in `src/content/projects/`.
-The project list also includes three credited links to Sebastian Lague's itch.io work as examples of featured projects.
-The Digital Logic Sim and Hydraulic Erosion screenshots come from their respective [itch.io project pages](https://sebastian.itch.io/).
-The Selected Work section also contains three fictional Unity concepts. Their `concept: true` frontmatter flag adds a visible label, and they intentionally have no project URL. Replace them with real projects as work becomes available.
-Their optional `article` field links each concept card to a related post.
+The current project list contains MU Origin, King Fish Dragon, Sniper Revenge,
+and Robot AI Lab. Previous project entries are preserved in `archive/projects/`,
+outside the content loader, and are no longer listed on the site. Existing blog
+articles remain available.
+
+Robot AI Lab is presented as a project outline using Unity, Robot, ROS 2, and
+Codex. Its original AI-generated concept image is `public/uploads/robot-ai-lab.png`;
+it is not a screenshot of an implemented system. The project card links to
+`/blog/robot-ai-lab/` for its direction and proposed milestones.
 
 ## Add images
 

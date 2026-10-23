@@ -44,6 +44,8 @@ collections:
       - { label: Original video title, name: videoTitle, widget: string, required: false }
       - { label: Fictional concept, name: concept, widget: boolean, default: false, required: false, hint: "Mark ideas or fictional portfolio examples clearly." }
       - { label: Project image, name: image, widget: image, required: false }
+      - { label: Image caption, name: imageCaption, widget: string, required: false }
+      - { label: Project status, name: status, widget: string, required: false }
       - { label: URL, name: href, widget: string, required: false, hint: "Leave blank for concepts without a live project." }
       - { label: Related article, name: article, widget: string, required: false, hint: "Optional internal URL, such as /blog/my-article/." }
       - label: Technologies
