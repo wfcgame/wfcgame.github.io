@@ -1,6 +1,6 @@
 # Wongfengchen Developer Portfolio
 
-A static developer portfolio based on the [official Astro Blog starter](https://astro.build/themes/details/blog/). It brings personal projects, writing, and contact information together in one place. Credited projects by other creators appear in a separate inspiration section.
+A static developer portfolio based on the [official Astro Blog starter](https://astro.build/themes/details/blog/). It brings personal projects, writing, and contact information together in one place. All projects appear together in the Selected Work section, with creator credits where applicable.
 
 ## Run locally
 
@@ -12,6 +12,13 @@ npm run dev
 Run `npm run build` to create a production build in `dist/`.
 
 ## Add articles and projects
+
+Administrator login is temporarily disabled: `/admin/index.html` displays an
+unavailability notice and does not load Decap CMS. To re-enable it, remove the
+notice and uncomment the CMS script in `public/admin/index.html`. While it is
+disabled, edit the Markdown content files directly.
+
+The following editor instructions apply after login is re-enabled.
 
 The **Editor** link in the footer opens `/admin/index.html`. The editor has separate **Articles** and **Projects** collections. Choose **New Article** or **New Project**, fill in the fields, and save.
 
@@ -60,9 +67,29 @@ Commit and push the file to trigger a deployment on your connected hosting servi
 
 ## Deploy
 
-Connect this repository to Vercel. Astro should be detected automatically. Use `npm run build` as the build command and `dist` as the output directory. Set the `SITE_URL` environment variable to your actual deployed URL, such as `https://your-domain.vercel.app`. It is used for canonical URLs, RSS, and the sitemap.
+The deployment target is `wfcgame/wfcgame.github.io`, served at
+`https://wfcgame.github.io/`. The initial repository creation and Pages setup
+must be completed using a GitHub account with access to that repository.
 
-For GitHub Pages, build the static site with `npm run build` in a GitHub Actions workflow. A user site (`username.github.io`) or a custom domain is recommended for root-path deployment. Publishing under a repository subpath also requires updating Astro's `base` option and the site's internal links.
+In the repository's **Settings → Pages**, set **Source** to **GitHub Actions**.
+The workflow in `.github/workflows/deploy.yml` builds and deploys the site on
+every push to `main`; it can also be started manually from the Actions tab.
+It uses Node.js 24 and the committed npm lockfile.
+
+After the repository is connected, publish changes with:
+
+```sh
+git add <changed-files>
+git commit -m "Update portfolio"
+git push
+```
+
+Saving a local file updates the local development server only. The public site
+updates after the push and a successful deployment in GitHub Actions. A failed
+build leaves the last successful deployment in place.
+
+The default canonical URL, RSS URL, and sitemap use `https://wfcgame.github.io`.
+Set `SITE_URL` if you later deploy to a different domain.
 
 ## Template credit
 

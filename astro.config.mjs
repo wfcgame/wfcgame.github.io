@@ -6,7 +6,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: process.env.SITE_URL || 'https://example.com',
+	site: process.env.SITE_URL || 'https://wfcgame.github.io',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{

@@ -5,13 +5,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { PROFILE, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
-const allProjects = await getCollection('projects');
-const isInspiration = (project: (typeof allProjects)[number]) =>
-  (project.data.author && project.data.author !== PROFILE.name) || (project.data.href ?? '').includes('sebastian.itch.io');
-const ownProjects = allProjects
-  .filter((project) => !isInspiration(project))
+const projects = (await getCollection('projects'))
   .sort((a, b) => Number(Boolean(a.data.concept)) - Number(Boolean(b.data.concept)));
-const inspirations = allProjects.filter(isInspiration);
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
@@ -60,12 +55,12 @@ const date = (value: Date) => new Intl.DateTimeFormat('en-US', { year: 'numeric'
       <section class="work section" id="projects">
         <div class="shell">
           <div class="section-heading"><div><span class="eyebrow">02 / SELECTED WORK</span><h2>Projects & Unity concepts<span class="accent-dot">.</span></h2></div><a class="text-link" href={PROFILE.github} target="_blank" rel="noopener noreferrer">View GitHub ↗</a></div>
-          <p class="section-intro">A live project alongside fictional Unity concepts created for this portfolio.</p>
-          <div class:list={["own-grid", { "single-project": ownProjects.length === 1 }]}>
-            {ownProjects.map((project, index) => (
+          <p class="section-intro">A collection of projects, experiments, and Unity concepts.</p>
+          <div class:list={["own-grid", { "single-project": projects.length === 1 }]}>
+            {projects.map((project, index) => (
               <article class="own-card">
                 <div class="own-image">{project.data.image ? <img src={project.data.image} alt={`${project.data.title} preview`} loading="lazy" /> : <span class="image-fallback">{project.data.title.slice(0, 1)}</span>}</div>
-                <div class="own-content"><div class="card-meta"><span class="card-number">PROJECT / {String(index + 1).padStart(2, '0')}</span>{project.data.concept && <span class="concept-badge">FICTIONAL CONCEPT</span>}</div><h3>{project.data.title}</h3><p>{project.data.description}</p><div class="tag-list">{project.data.tags.map((tag) => <span>{tag}</span>)}</div>{project.data.href ? <a class="project-cta" href={project.data.href} target={project.data.href.startsWith('http') ? '_blank' : undefined} rel={project.data.href.startsWith('http') ? 'noopener noreferrer' : undefined}>View project ↗</a> : project.data.article ? <a class="project-cta" href={project.data.article}>Read concept notes ↗</a> : null}</div>
+                <div class="own-content"><div class="card-meta"><span class="card-number">PROJECT / {String(index + 1).padStart(2, '0')}</span>{project.data.concept && <span class="concept-badge">FICTIONAL CONCEPT</span>}</div><h3>{project.data.title}</h3>{project.data.author && project.data.author !== PROFILE.name && <span class="creator">BY {project.data.author}</span>}<p>{project.data.description}</p><div class="tag-list">{project.data.tags.map((tag) => <span>{tag}</span>)}</div>{project.data.href ? <a class="project-cta" href={project.data.href} target={project.data.href.startsWith('http') ? '_blank' : undefined} rel={project.data.href.startsWith('http') ? 'noopener noreferrer' : undefined}>View project ↗</a> : project.data.article ? <a class="project-cta" href={project.data.article}>Read concept notes ↗</a> : null}</div>
               </article>
             ))}
           </div>
@@ -78,9 +73,8 @@ const date = (value: Date) => new Intl.DateTimeFormat('en-US', { year: 'numeric'
         <div class="article-list">{posts.map((post, index) => <a class="article-item" href={`/blog/${post.id}/`}><span class="article-index">{String(index + 1).padStart(2, '0')}</span><div><h3>{post.data.title}</h3><p>{post.data.description}</p></div><time datetime={post.data.pubDate.toISOString()}>{date(post.data.pubDate)}</time><span class="article-arrow">↗</span></a>)}</div>
       </section>
 
-      {inspirations.length > 0 && <section class="inspiration section shell" id="inspiration"><div class="section-heading"><div><span class="eyebrow">04 / CURATED INSPIRATION</span><h2>Work that inspires me<span class="accent-dot">.</span></h2></div></div><p class="section-intro">Projects by other creators that are worth exploring. These are not my work.</p><div class="inspiration-grid">{inspirations.map((project) => <a class="inspiration-card" href={project.data.href} target="_blank" rel="noopener noreferrer"><div class="inspiration-image">{project.data.image ? <img src={project.data.image} alt={`${project.data.title} screenshot`} loading="lazy" /> : <div class="image-fallback">✳</div>}</div><div class="inspiration-content"><span class="creator">BY {project.data.author || 'SEBASTIAN LAGUE'}</span><h3>{project.data.title} <span>↗</span></h3><p>{project.data.description}</p></div></a>)}</div></section>}
 
-      <section class="contact section" id="contact"><div class="shell contact-inner"><div><span class="eyebrow">05 / CONTACT</span><h2>Have something<br />in mind<span>?</span></h2><p>Whether you want to collaborate or just talk about an idea, I'd love to hear from you.</p></div><div class="contact-actions"><a class="contact-mail" href={`mailto:${PROFILE.email}`}>{PROFILE.email} <span>↗</span></a><a class="contact-github" href={PROFILE.github} target="_blank" rel="noopener noreferrer">Or find me on GitHub ↗</a></div></div></section>
+      <section class="contact section" id="contact"><div class="shell contact-inner"><div><span class="eyebrow">04 / CONTACT</span><h2>Have something<br />in mind<span>?</span></h2><p>Whether you want to collaborate or just talk about an idea, I'd love to hear from you.</p></div><div class="contact-actions"><a class="contact-mail" href={`mailto:${PROFILE.email}`}>{PROFILE.email} <span>↗</span></a><a class="contact-github" href={PROFILE.github} target="_blank" rel="noopener noreferrer">Or find me on GitHub ↗</a></div></div></section>
     </main>
     <Footer />
   </body>
