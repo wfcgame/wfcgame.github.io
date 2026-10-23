@@ -37,6 +37,11 @@ collections:
       - { label: Name, name: title, widget: string }
       - { label: Description, name: description, widget: text }
       - { label: Creator, name: author, widget: string, required: false, hint: "Credit the original creator when featuring someone else's work." }
+      - { label: Development experience, name: experience, widget: boolean, default: false, required: false }
+      - { label: Display order, name: order, widget: number, default: 100, required: false, value_type: int }
+      - { label: YouTube video ID, name: videoId, widget: string, required: false, pattern: ['^[A-Za-z0-9_-]{11}$', 'Enter the 11-character YouTube video ID.'] }
+      - { label: Video creator, name: videoCredit, widget: string, required: false }
+      - { label: Original video title, name: videoTitle, widget: string, required: false }
       - { label: Fictional concept, name: concept, widget: boolean, default: false, required: false, hint: "Mark ideas or fictional portfolio examples clearly." }
       - { label: Project image, name: image, widget: image, required: false }
       - { label: URL, name: href, widget: string, required: false, hint: "Leave blank for concepts without a live project." }

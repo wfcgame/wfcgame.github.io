@@ -1,0 +1,42 @@
+---
+interface Props {
+  videoId: string;
+  image?: string;
+  title: string;
+}
+const { videoId, image, title } = Astro.props;
+---
+<div class="video-preview">
+  <button type="button" data-video-id={videoId} data-video-title={title} aria-label={`Play ${title} gameplay video`}>
+    <img src={image} alt={`${title} gameplay video thumbnail`} loading="lazy" />
+    <span class="video-shade"></span>
+    <span class="play-icon" aria-hidden="true">▶</span>
+    <span class="video-caption">WATCH GAMEPLAY <span aria-hidden="true">↗</span></span>
+  </button>
+</div>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-video-id]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube-nocookie.com/embed/${button.dataset.videoId}?autoplay=1`;
+      frame.title = `${button.dataset.videoTitle} gameplay video`;
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      frame.allowFullscreen = true;
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      button.replaceWith(frame);
+      frame.focus();
+    });
+  });
+</script>
+<style>
+  .video-preview{aspect-ratio:16/9;background:#080e0d;overflow:hidden}
+  button{position:relative;display:block;width:100%;height:100%;padding:0;border:0;background:transparent;color:white;cursor:pointer;font:inherit}
+  img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+  button:hover img{transform:scale(1.035)}
+  button:focus-visible{outline:3px solid var(--accent);outline-offset:-4px}
+  .video-shade{position:absolute;inset:0;background:linear-gradient(transparent 40%,#07110ee6)}
+  .play-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:62px;height:62px;border:1px solid #ffffff88;border-radius:50%;background:#101b18c9;color:var(--accent);font-size:22px;padding-left:3px}
+  .video-caption{position:absolute;bottom:20px;left:24px;right:24px;display:flex;justify-content:space-between;letter-spacing:.16em;font-size:11px;font-weight:700}
+  .video-preview :global(iframe){display:block;width:100%;height:100%;border:0}
+  @media(prefers-reduced-motion:reduce){img{transition:none}}
+</style>

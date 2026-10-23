@@ -94,3 +94,20 @@ Set `SITE_URL` if you later deploy to a different domain.
 ## Template credit
 
 Based on the official Astro Blog starter, with a redesigned interface and new content.
+
+## Game development experience
+
+MU Origin, King Fish Dragon, and Sniper Revenge are listed as previous development
+contributions, using the portfolio owner’s supplied project names. No specific
+role, dates, technology, or ownership is claimed. These cards appear first.
+
+Gameplay previews load YouTube’s privacy-enhanced player only after a click,
+with a direct YouTube link available as a fallback. Thumbnail sources:
+
+- MU Origin: https://www.youtube.com/watch?v=-Wc9VDGN1Nk — NEO GGWP (MU ORIGIN 2)
+- King Fish Dragon: https://www.youtube.com/watch?v=uDbTvoPoqgA — Gamedemo (Dragon King Fishing)
+- Sniper Revenge: https://www.youtube.com/watch?v=XHct1L9AREc — Mr Sniper (Sniper 3D Assassin, Revenge mission)
+
+The linked video titles differ from the supplied project names; the cards retain
+those original video titles in their source captions. Local thumbnails in
+`public/uploads/` come from the corresponding YouTube video thumbnail endpoints.
